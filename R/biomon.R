@@ -8,5 +8,5 @@
 
 #' @export
 biomon <- function(){
-  shiny::runApp(system.file('shiny', package='biomonView'))
+  shiny::runApp(system.file('shiny', package='biomon'))
 }

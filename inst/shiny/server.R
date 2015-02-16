@@ -47,37 +47,35 @@ shinyServer(
     output$analysisPath <- renderText({ 
       paste( analysisFolder )
     })
-# --- GLOBAL values
+    # --- GLOBAL values
+    observe(gbl.mAnalysis    <<- paste0(gbl.analysis, input$inpAnalysis))
+
     observe(gbl.mAttributes  <<- paste0(gbl.matrices, input$inpAttributes))
     observe(gbl.mEnvironment <<- paste0(gbl.matrices, input$inpEnvironment))
     observe(gbl.mFactor      <<- paste0(gbl.matrices, input$inpFactor))
     observe(gbl.mSpace       <<- paste0(gbl.matrices, input$inpSpece))
     observe(gbl.mSpecies     <<- paste0(gbl.matrices, input$inpSpecies))
-
-    observe(gbl.mAnalysis    <<- paste0(gbl.analysis, input$inpAnalysis))
-
-# --- UPLOAD analysis
-  output$analysisUploaded <- renderText({
-    inFile1 <- input$file1
-  
-  if (is.null(inFile1)){
-    return(NULL)
-  }else{
-    file.copy(inFile1$datapath, paste0(analysisFolder,inFile1$name), overwrite=TRUE, copy.mode=TRUE)  
-    return("[Refresh the page]")
-  }
-  })
-
-# --- UPLOAD matrices
-  output$matrixUploaded <- renderText({
-    inFile2 <- input$file2
+    # --- UPLOAD analysis
+    output$analysisUploaded <- renderText({
+      inFile1 <- input$file1
     
-    if (is.null(inFile2)){
+    if (is.null(inFile1)){
       return(NULL)
     }else{
-      file.copy(inFile2$datapath, paste0(matricesFolder,inFile2$name), overwrite=TRUE, copy.mode=TRUE)  
+      file.copy(inFile1$datapath, paste0(analysisFolder,inFile1$name), overwrite=TRUE, copy.mode=TRUE)  
       return("[Refresh the page]")
     }
-  })
+    })
+    # --- UPLOAD matrices
+    output$matrixUploaded <- renderText({
+      inFile2 <- input$file2
+      
+      if (is.null(inFile2)){
+        return(NULL)
+      }else{
+        file.copy(inFile2$datapath, paste0(matricesFolder,inFile2$name), overwrite=TRUE, copy.mode=TRUE)  
+        return("[Refresh the page]")
+      }
+    })
   } #Function
 )

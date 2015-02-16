@@ -7,10 +7,10 @@ shinyUI(
     # ---
     sidebarLayout(
       position = 'left',sidebarPanel(
-        #--- Analysis
+        #--- DROP-DOWN Analysis
           uiOutput('sInputAnalysis'),
           hr(),
-        # --- Data Matrices
+          #--- DROP-DOWN Matrices
           h4('Data Matrices'),
           uiOutput('sInputAttributes'),
           uiOutput('sInputSpecies'),
@@ -20,6 +20,7 @@ shinyUI(
       ),
       mainPanel(    
         fluidRow(
+          #--- PUSHBUTTON Execute
           column( 12,
                   actionButton('btnExecute', label='Execute'),
                   verbatimTextOutput('execMsg')
@@ -30,12 +31,14 @@ shinyUI(
                   h3('Upload Files'),
                   hr(),
                   fluidRow(
+                    # --- UPLOAD analysis
                     column( 6,
                             fileInput('file1', 'Analysis File', accept=c('text/csv','text/comma-separated values,text/plain','.csv')),
                             textOutput('analysisUploaded'),
                             hr(),
                             textOutput('analysisPath')
                             ),
+                    # --- UPLOAD matrices
                     column( 6,
                             fileInput('file2', 'Matrix File', accept=c('text/csv','text/comma-separated values,text/plain','.csv')),
                             textOutput('matrixUploaded'),

@@ -4,9 +4,15 @@
 \alias{biomon}
 \title{Function to call Biomon's interface}
 \usage{
-biomon()
+biomon(parm = TRUE)
+}
+\arguments{
+\item{parm}{Parameter just for atomatic test purposes, there is no need to inform it.}
 }
 \description{
 Graphical User Interface for Biomon
+}
+\examples{
+biomon(FALSE)
 }
 

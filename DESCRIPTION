@@ -1,7 +1,7 @@
 Package: biomon
 Type: Package
 Title: This package delivers a GUI (Graphical User Interface) for the Biomon Application.
-Version: 2.0
+Version: 2.1
 Date: 2014-12-23
 Author: Rodrigo Buhler
 Maintainer: Rodrigo Buhler <rodrigo.buhler@ymail.com>
